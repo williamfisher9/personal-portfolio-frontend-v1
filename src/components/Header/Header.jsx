@@ -38,7 +38,7 @@ const Header = () => {
           {
             userContext.isAuthenticated ? 
             <button className={`header-btn ${theme.theme == 'dark' ? 'btn-dark-theme' : 'btn-light-theme'}`} onClick={handleSignout}>SIGN OUT</button>
-            :<button className={`header-btn ${theme.theme == 'dark' ? 'btn-dark-theme' : 'btn-light-theme'}`} onClick={() => userContext.setShowLoginForm(true)}>SIGN IN BTN</button>
+            :<button className={`header-btn ${theme.theme == 'dark' ? 'btn-dark-theme' : 'btn-light-theme'}`} onClick={() => userContext.setShowLoginForm(true)}>SIGN IN</button>
           }
 
           <span className={`menu-icon material-symbols-rounded ${theme.theme == 'dark' ? 'bg-teal-500/100 text-black' : 'bg-indigo-500/100 text-white'}`} onClick={() => setNavOpenState((prev) => !prev)}>
