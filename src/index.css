@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+
+* {
+  @apply m-0 p-0 box-border
+}
+
+html {
+  @apply scrollbar-thin scrollbar-track-slate-200 scrollbar-thumb-blue-400 hover:scrollbar-thumb-blue-500 active:scrollbar-thumb-blue-600;
+  scroll-behavior: smooth;
+}
+
+[data-theme='dark'] {
+  @apply bg-zinc-900 text-[#dee4e7]
+}
+
+[data-theme='light'] {
+  @apply bg-[#dee4e7] text-zinc-800
+}
+
+@layer utilities {
+  .btn-light-theme {
+    @apply bg-transparent text-white hover:bg-indigo-600 rounded-md cursor-pointer bg-indigo-500
+  }
+
+  .btn-dark-theme {
+    @apply bg-transparent text-black hover:bg-teal-600 rounded-md cursor-pointer bg-teal-500
+  }
+}
+
+
+@layer base {
+  h1 {
+    display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  }
+
+  h2 {
+    display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  }
+
+  h3 {
+    display: block;
+  font-size: 1.3em;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  }
+
+  pre {
+    font-family: 'Monaco', monospace;
+    padding: 0.5em;
+    @apply rounded-md bg-gray-300
+  }
+
+code {
+    font-family: 'Monaco', monospace;
+    font-size: 16px;
+    line-height: 100%;
+    word-break: normal;
+    color: rgb(168, 0, 34);
+  }
+
+
+
+}
+

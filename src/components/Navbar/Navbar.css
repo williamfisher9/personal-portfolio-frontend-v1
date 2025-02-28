@@ -1,0 +1,19 @@
+.navbar-menu {
+    @apply flex gap-2 relative
+}
+
+.mid-screen-navbar {
+    @apply items-center max-md:hidden md:visible h-14 px-2 rounded-xl
+}
+
+.side-screen-navbar {
+    @apply flex-col justify-center items-center fixed top-0 right-0 h-full max-md:visible md:hidden p-4 z-50
+}
+
+.navbar-item {
+    @apply rounded-md px-2 py-1 uppercase transition duration-300 
+}
+
+.active-navbar-box {
+    /*@apply rounded-md absolute bg-transparent z-50 border transition-[top,left] duration-300*/
+}

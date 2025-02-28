@@ -1,0 +1,7 @@
+.header-btn {
+    @apply h-10 px-8 max-md:hidden
+}
+
+.menu-icon {
+    @apply  md:hidden text-3xl rounded-md p-[1px] hover:cursor-pointer active:transition-[scale] active:scale-90 active:duration-300 active:select-none
+}
