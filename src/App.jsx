@@ -24,7 +24,7 @@ const App = () => {
       <div data-theme={theme}>
           <BrowserRouter>
             <Routes>
-              <Route path="/portfolio" element={<Layout />}>
+              <Route path="/" element={<Layout />}>
                 <Route index element={<><Hero /><IntroductoryMessage /><Skills /><Contact /><Portfolio /><ScrollButton /></>}></Route>
                 <Route path="/home" element={<><Hero /><IntroductoryMessage /><Skills /><Contact /><Portfolio /><ScrollButton /></>}></Route>
                 <Route path="/blog" element={<Blog />}></Route>

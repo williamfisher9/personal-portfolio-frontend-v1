@@ -1,6 +1,6 @@
 import React from "react";
 
-export const BACKEND_URL = "https://willtechbooth.dev/portfolio"
+export const BACKEND_URL = "https://willtechbooth.dev"
 export const ThemeContext = React.createContext('dark');
 export const UserContext = React.createContext(false);
 
