@@ -24,7 +24,7 @@ const Blog = () => {
     }, [])
 
     const handleNewPostRequest = () => {
-        navigate('/portfolio/blog/posts/new')
+        navigate('/blog/posts/new')
     }
 
     const handleSearchBarChange = () => {
@@ -38,11 +38,11 @@ const Blog = () => {
     }
 
     const readPost = (id) => {
-        navigate(`/portfolio/blog/posts/${id}`)
+        navigate(`/blog/posts/${id}`)
     }
 
     const editPost = (id) => {
-        navigate(`/portfolio/blog/posts/edit/${id}`)
+        navigate(`/blog/posts/edit/${id}`)
     }
 
     const deletePostById = (id) => {
