@@ -20,7 +20,7 @@ const NoMatch = () => {
 
             <a className={`absolute max-[768px]:bottom-[-50px] max-[768px]:text-sm max-[768px]:px-1 md:top-8 left-[50%] translate-x-[-50%] 
                 flex justify-center items-center bg-[#872845] text-xl text-white drop-shadow-md
-                cursor-pointer px-8 py-2 rounded-md hover:shadow-2xl`} onClick={() => navigate("/home")}>
+                cursor-pointer px-8 py-2 rounded-md hover:shadow-2xl`} onClick={() => navigate("/portfolio/home")}>
                   GO TO HOME PAGE
                 </a>
           </div>
