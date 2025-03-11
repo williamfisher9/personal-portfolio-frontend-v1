@@ -14,10 +14,10 @@ const ImageSelector = ({visible, closeImageSelector, storeInsertedFile}) => {
     const imageFileChooser = useRef()
 
     const removeImage = (id) => {
-        axios.delete(`${BACKEND_URL}/api/v1/blog/posts/images/${id}`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
+        axios.delete(`${BACKEND_URL}/portfolio/api/v1/blog/posts/images/${id}`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
         .then((res) => {
             if(res.status==200){
-                axios.get(`${BACKEND_URL}/api/v1/blog/posts/images`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
+                axios.get(`${BACKEND_URL}/portfolio/api/v1/blog/posts/images`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
                 .then((res) => {
                     setStoredImages(res.data.message)
                 })
@@ -26,7 +26,7 @@ const ImageSelector = ({visible, closeImageSelector, storeInsertedFile}) => {
     }
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/blog/posts/images`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
+        axios.get(`${BACKEND_URL}/portfolio/api/v1/blog/posts/images`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
         .then((res) => {
             setStoredImages(res.data.message)
         })
@@ -41,10 +41,10 @@ const ImageSelector = ({visible, closeImageSelector, storeInsertedFile}) => {
         let formData = new FormData()
         formData.append("file", event.target.files[0])
 
-        axios.post(`${BACKEND_URL}/api/v1/blog/posts/upload`, formData, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
+        axios.post(`${BACKEND_URL}/portfolio/api/v1/blog/posts/upload`, formData, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
         .then((res) => {
             if(res.status==200){
-                axios.get(`${BACKEND_URL}/api/v1/blog/posts/images`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
+                axios.get(`${BACKEND_URL}/portfolio/api/v1/blog/posts/images`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
                 .then((res) => {
                     setStoredImages(res.data.message)
                 })

@@ -14,7 +14,7 @@ const Blog = () => {
     const userContext = useContext(UserContext)
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/blog/posts`)
+        axios.get(`${BACKEND_URL}/portfolio/api/v1/blog/posts`)
         .then((res) => {
             setPosts(res.data.message)
         })
@@ -24,11 +24,11 @@ const Blog = () => {
     }, [])
 
     const handleNewPostRequest = () => {
-        navigate('/blog/posts/new')
+        navigate('/portfolio/blog/posts/new')
     }
 
     const handleSearchBarChange = () => {
-        axios.get(`${BACKEND_URL}/api/v1/blog/posts/search/${event.target.value == "" ? "-" : event.target.value}`)
+        axios.get(`${BACKEND_URL}/portfolio/api/v1/blog/posts/search/${event.target.value == "" ? "-" : event.target.value}`)
         .then((res) => {
             setPosts(res.data.message)
         })
@@ -38,18 +38,18 @@ const Blog = () => {
     }
 
     const readPost = (id) => {
-        navigate(`/blog/posts/${id}`)
+        navigate(`/portfolio/blog/posts/${id}`)
     }
 
     const editPost = (id) => {
-        navigate(`/blog/posts/edit/${id}`)
+        navigate(`/portfolio/blog/posts/edit/${id}`)
     }
 
     const deletePostById = (id) => {
-        axios.delete(`${BACKEND_URL}/api/v1/blog/posts/${id}`, {headers: {"Authorization": `Bearer ${Cookies.get("token")}`}})
+        axios.delete(`${BACKEND_URL}/portfolio/api/v1/blog/posts/${id}`, {headers: {"Authorization": `Bearer ${Cookies.get("token")}`}})
         .then((res) => {
             if(res.status == 200){
-                axios.get(`${BACKEND_URL}/api/v1/blog/posts`)
+                axios.get(`${BACKEND_URL}/portfolio/api/v1/blog/posts`)
         .then((res) => {
             setPosts(res.data.message)
         })

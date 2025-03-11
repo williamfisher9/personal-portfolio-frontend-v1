@@ -24,13 +24,13 @@ const App = () => {
       <div data-theme={theme}>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Layout />}>
+              <Route path="/portfolio" element={<Layout />}>
                 <Route index element={<><Hero /><IntroductoryMessage /><Skills /><Contact /><Portfolio /><ScrollButton /></>}></Route>
-                <Route path="/home" element={<><Hero /><IntroductoryMessage /><Skills /><Contact /><Portfolio /><ScrollButton /></>}></Route>
-                <Route path="/blog" element={<Blog />}></Route>
-                <Route path="/blog/posts/new" element={<BlogPost mode="new" />}></Route>
-                <Route path="/blog/posts/edit/:id" element={<BlogPost mode="edit" />}></Route>
-                <Route path="/blog/posts/:id" element={<BlogPostDisplay />}></Route>
+                <Route path="/portfolio/home" element={<><Hero /><IntroductoryMessage /><Skills /><Contact /><Portfolio /><ScrollButton /></>}></Route>
+                <Route path="/portfolio/blog" element={<Blog />}></Route>
+                <Route path="/portfolio/blog/posts/new" element={<BlogPost mode="new" />}></Route>
+                <Route path="/portfolio/blog/posts/edit/:id" element={<BlogPost mode="edit" />}></Route>
+                <Route path="/portfolio/blog/posts/:id" element={<BlogPostDisplay />}></Route>
                 <Route path="*" element={<NoMatch />}></Route>
               </Route>
             </Routes>

@@ -94,7 +94,7 @@ const BlogPost = ({ mode }) => {
           .then((res) => {
             if (res.status == 201) {
               setIsPublishing(false);
-              navigate("/blog");
+              navigate("/portfolio/blog");
             }
           })
           .catch((err) => {
@@ -113,7 +113,7 @@ const BlogPost = ({ mode }) => {
           .then((res) => {
             if (res.status == 201) {
               setIsPublishing(false);
-              navigate("/blog");
+              navigate("/portfolio/blog");
             }
           })
           .catch((err) => {
@@ -262,7 +262,7 @@ const BlogPost = ({ mode }) => {
 
 {mode == "edit" ? <button 
 className={` w-[150px] h-[40px] btn flex justify-center items-center gap-1 ${theme.theme == "dark" ? "btn-dark-theme" : "btn-light-theme"}`}
-onClick={() => {navigate("/blog")}}>
+onClick={() => {navigate("/portfolio/blog")}}>
             CANCEL <span className="material-symbols-rounded">close</span>
           </button>
           : null}
