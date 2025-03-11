@@ -12,10 +12,10 @@ const Navbar = ({navOpenState, closeNav}) => {
     const userContext = useContext(UserContext);
 
     const navbarItems = [
-        {href: "/home", label: "home", menuSize: "all", ref: activeNavbarItem},
-        {href: "/home#portfolio", label: "portfolio", menuSize: "all"},
-        {href: "/blog", label: "blog", menuSize: "all"},
-        {href: "/home#contact", label: "contact", menuSize: "all"}
+        {href: "/portfolio/home", label: "home", menuSize: "all", ref: activeNavbarItem},
+        {href: "/portfolio/home#portfolio", label: "portfolio", menuSize: "all"},
+        {href: "/portfolio/blog", label: "blog", menuSize: "all"},
+        {href: "/portfolio/home#contact", label: "contact", menuSize: "all"}
     ]
     
     /*const handleNavbarItemClick = () => {
