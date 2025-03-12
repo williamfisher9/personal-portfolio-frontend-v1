@@ -15,7 +15,7 @@ const Portfolio = () => {
     const [showNewPortfolioItem, setShowNewPortfolioItem] = useState(false)
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/portfolio/api/v1/portfolio/items`)
+        axios.get(`${BACKEND_URL}/api/v1/portfolio/items`)
         .then(res => {
             console.log(res.data.message)
             setItems(res.data.message)
@@ -27,7 +27,7 @@ const Portfolio = () => {
 
 
     const deletePortfolioItem = (id) => {
-        axios.delete(`${BACKEND_URL}/portfolio/api/v1/portfolio/items/${id}`, {headers: { Authorization: `Bearer ${Cookies.get("token")}`}})
+        axios.delete(`${BACKEND_URL}/api/v1/portfolio/items/${id}`, {headers: { Authorization: `Bearer ${Cookies.get("token")}`}})
         .then(res => {
             if(res.status == 200)
             closeAndReloadData()
@@ -42,7 +42,7 @@ setShowNewPortfolioItem(true)
     }
 
     const closeAndReloadData = () => {
-        axios.get(`${BACKEND_URL}/portfolio/api/v1/portfolio/items`)
+        axios.get(`${BACKEND_URL}/api/v1/portfolio/items`)
         .then(res => {
             console.log(res.data.message)
             setItems(res.data.message)

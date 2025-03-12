@@ -10,7 +10,7 @@ const BlogPostDisplay = () => {
     const [post, setPost] = useState("")
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/portfolio/api/v1/blog/posts/${id}`)
+        axios.get(`${BACKEND_URL}/api/v1/blog/posts/${id}`)
         .then((res) => {
             setPost(res.data.message)
         })

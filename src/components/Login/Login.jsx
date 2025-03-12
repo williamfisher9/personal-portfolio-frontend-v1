@@ -48,7 +48,7 @@ const Login = ({ closeLoginForm, navigateTo, showLoginForm }) => {
 
     if(!hasErrors){
       axios
-      .post(`${BACKEND_URL}/api/v1/users/login`, { username, password })
+      .post(`${BACKEND_URL}/portfolio/api/v1/users/login`, { username, password })
       .then((res) => {
         Cookies.set("token", res.data.message);
         userContext.setAuthenticated(true);

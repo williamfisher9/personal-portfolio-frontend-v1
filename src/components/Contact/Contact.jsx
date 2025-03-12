@@ -58,7 +58,7 @@ const Contact = () => {
 
     if(!hasErrors){
       setIsSendingEmail(true)
-      axios.post(`${BACKEND_URL}/portfolio/api/v1/mail/send`, {name, mail, message})
+      axios.post(`${BACKEND_URL}/api/v1/mail/send`, {name, mail, message})
     .then((res) => {
       if(res.status==200){
         setName("")
