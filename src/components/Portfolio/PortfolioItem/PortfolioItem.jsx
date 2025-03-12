@@ -223,11 +223,12 @@ const PortfolioItem = ({ mode, closeModalAndReloadData }) => {
         <label htmlFor="link" className="text-lg">
            Link
         </label>
-        <textarea
+        <input
+          type="text"
           id="link"
           name="link"
           className={` 
-            pl-2 py-2 bg-transparent outline-none w-full h-12 border-2 
+            pl-2 bg-transparent outline-none w-full h-12 border-2 
             rounded-md text-lg ${
               theme.theme == "dark" ? "border-teal-500" : "border-indigo-500"
             }`}
