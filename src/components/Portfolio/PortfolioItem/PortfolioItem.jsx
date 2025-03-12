@@ -29,7 +29,7 @@ const PortfolioItem = ({ mode, closeModalAndReloadData }) => {
   useEffect(() => {
     if (mode == "edit") {
       axios
-        .get(`${BACKEND_URL}/portfolio/api/v1/portfolio/items/${params.id}`)
+        .get(`${BACKEND_URL}/api/v1/portfolio/items/${params.id}`)
         .then((res) => {
           if (res.status == 200) {
             setTitle(res.data.message.title);
@@ -82,7 +82,7 @@ const PortfolioItem = ({ mode, closeModalAndReloadData }) => {
       if (mode == "new") {
         console.log("new")
         axios
-          .post(`${BACKEND_URL}/portfolio/api/v1/portfolio/items/new`, formData, {
+          .post(`${BACKEND_URL}/api/v1/portfolio/items/new`, formData, {
             headers: { Authorization: `Bearer ${Cookies.get("token")}` },
           })
           .then((res) => {
@@ -103,7 +103,7 @@ const PortfolioItem = ({ mode, closeModalAndReloadData }) => {
         console.log("update")
         axios
           .put(
-            `${BACKEND_URL}/portfolio/api/v1/portfolio/items/update/${params.id}`,
+            `${BACKEND_URL}/api/v1/portfolio/items/update/${params.id}`,
             formData,
             { headers: { Authorization: `Bearer ${Cookies.get("token")}` } }
           )

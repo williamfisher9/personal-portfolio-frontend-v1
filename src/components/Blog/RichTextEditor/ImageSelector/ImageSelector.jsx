@@ -17,7 +17,7 @@ const ImageSelector = ({visible, closeImageSelector, storeInsertedFile}) => {
         axios.delete(`${BACKEND_URL}/api/v1/blog/posts/images/${id}`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
         .then((res) => {
             if(res.status==200){
-                axios.get(`${BACKEND_URL}/portfolio/api/v1/blog/posts/images`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
+                axios.get(`${BACKEND_URL}/api/v1/blog/posts/images`, {headers: {"Authorization": `Bearer ${Cookies.get('token')}`}})
                 .then((res) => {
                     setStoredImages(res.data.message)
                 })
