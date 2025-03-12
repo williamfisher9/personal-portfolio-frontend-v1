@@ -22,6 +22,7 @@ const Login = ({ closeLoginForm, navigateTo, showLoginForm }) => {
   }
 
   const handleLoginBtnClick = () => {
+    event.preventDefault();
     let hasErrors = false;
     let newErrors = {username: "", password: "", form: ""}
     setErrors({...newErrors})
@@ -68,7 +69,7 @@ const Login = ({ closeLoginForm, navigateTo, showLoginForm }) => {
       className={`${theme.theme == "dark" ? "bg-teal-900" : "bg-indigo-900"}
             fixed inset-0 bg-black backdrop-blur-sm bg-opacity-40 flex items-center justify-center z-50`}
     >
-      <div
+      <form
         className={`relative w-[80%] md:w-[500px] overflow-y-auto ${
           theme.theme == "dark" ? "bg-black" : "bg-black"
         }
@@ -100,6 +101,7 @@ const Login = ({ closeLoginForm, navigateTo, showLoginForm }) => {
           <input
             type="text"
             placeholder="USERNAME"
+            autoComplete="off"
             id="username"
             name="username"
             className="absolute top-0 left-0 w-full h-full pl-2 bg-transparent border-none outline-none rounded-md"
@@ -120,6 +122,7 @@ const Login = ({ closeLoginForm, navigateTo, showLoginForm }) => {
           <input
             type="password"
             placeholder="PASSWORD"
+            autoComplete="off"
             id="password"
             name="password"
             className="absolute top-0 left-0 w-full
@@ -145,7 +148,7 @@ const Login = ({ closeLoginForm, navigateTo, showLoginForm }) => {
 
         <p className="absolute left-[50%] bottom-7 translate-x-[-50%] text-red-500">{errors.form}</p>
         
-      </div>
+      </form>
     </div>
   );
 };
