@@ -4,9 +4,14 @@ import { BACKEND_URL, ThemeContext, UserContext } from '../../constants/Constant
 import axios from 'axios'
 import PortfolioItem from './PortfolioItem/PortfolioItem'
 import Cookies from "js-cookie";
+import { FaExternalLinkAlt } from 'react-icons/fa'
+import { CgDetailsMore } from 'react-icons/cg'
+import { GoLinkExternal } from 'react-icons/go'
+import { MdDeleteOutline } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 const Portfolio = () => {
-
+    const navigate = useNavigate();
     const userContext = useContext(UserContext)
     const theme = useContext(ThemeContext)
 
@@ -111,24 +116,31 @@ setShowNewPortfolioItem(true)
                 <button className={`${theme.theme == 'dark' ? 'bg-teal-500 outline-teal-500 hover:bg-teal-600 text-black' : 'bg-indigo-500 outline-indigo-500 hover:bg-indigo-600 text-white'} 
                 rounded-full p-2 flex justify-center items-center  transition-all duration-100 outline-offset-1 hover:outline-[2px] outline-dashed outline-1  hover:outline-offset-4`}
                 onClick={() => window.open(link, "_blank", "noreferrer")}
-                ><span className="material-symbols-rounded">
-                file_open
-                </span>
+                >
+                    <GoLinkExternal className='size-6'/>
+                </button>
+
+                <button className={`${theme.theme == 'dark' ? 'bg-teal-500 outline-teal-500 hover:bg-teal-600 text-black' : 'bg-indigo-500 outline-indigo-500 hover:bg-indigo-600 text-white'} 
+                rounded-full p-2 flex justify-center items-center  transition-all duration-100 outline-offset-1 hover:outline-[2px] outline-dashed outline-1  hover:outline-offset-4`}
+                onClick={() => navigate(`/portfolio/home/projects/${id}`)}
+                >
+                    <CgDetailsMore className='size-6'/>
                 </button>
                 
                 {
-                    userContext.isAuthenticated ?
+                    userContext.isAuthenticated 
+                    ?
                     <>
-                        
                         <button 
                         className={`${theme.theme == 'dark' ? ' bg-teal-500 hover:bg-teal-600 outline-teal-500 text-black' : 
                             'bg-indigo-500 hover:bg-indigo-600 outline-indigo-500 text-white'} 
                         rounded-full p-2 flex justify-center items-center transition-all duration-100 outline-offset-1 hover:outline-[2px] outline-dashed outline-1 hover:outline-offset-4`} 
-                        onClick={() => deletePortfolioItem(id)}><span className="material-symbols-rounded">
-                        delete
-                        </span></button>
+                        onClick={() => deletePortfolioItem(id)}>
+                            <MdDeleteOutline className='size-6'/>
+                        </button>
                     </>
-                    : null
+                    :
+                    null
                 }
                 
             </div>

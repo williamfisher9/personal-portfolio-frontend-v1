@@ -21,7 +21,7 @@ html {
 }
 
 [data-theme='dark'] {
-  @apply bg-zinc-900 text-[#dee4e7]
+  @apply bg-gray-800 text-[#dee4e7]
 }
 
 [data-theme='light'] {

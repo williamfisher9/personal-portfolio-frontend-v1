@@ -16,6 +16,7 @@ const BlogPost = ({ mode }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [editorText, setEditorText] = useState("");
+  const [selectedProject, setSelectedProject] = useState(0);
   const [errors, setErrors] = useState({
     titleError: "",
     descriptionError: "",
@@ -24,6 +25,8 @@ const BlogPost = ({ mode }) => {
   const [mainImage, setMainImage] = useState(null);
 
   const [isPublishing, setIsPublishing] = useState(false);
+
+  const [projects, setProjects] = useState([])
 
   const userContext = useContext(UserContext)
 
@@ -40,11 +43,32 @@ const BlogPost = ({ mode }) => {
             setEditorText(res.data.message.post_contents);
             setMainImageUrl(res.data.message.main_image_source);
             setLoading(false);
+
+            axios.get(`${BACKEND_URL}/api/v1/portfolio/items`)
+              .then(res => {
+                  console.log(res.data.message)
+                  setProjects(res.data.message)
+              })
+              .catch(err => {
+                  err.message
+              })
           }
         })
         .catch((err) => {
           console.log(err);
         });
+    }
+
+    if(mode == "new"){
+      axios.get(`${BACKEND_URL}/api/v1/portfolio/items`)
+      .then(res => {
+          console.log(res.data.message)
+          console.log(res.data.message[0].title)
+          setProjects(res.data.message)
+      })
+      .catch(err => {
+          err.message
+      })
     }
   }, []);
 
@@ -84,6 +108,7 @@ const BlogPost = ({ mode }) => {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("post_contents", editorText);
+      formData.append("project_id", selectedProject);
       formData.append("file", mainImage);
 
       if (mode == "new") {
@@ -137,6 +162,11 @@ const BlogPost = ({ mode }) => {
 
   const mainImageRef = useRef();
 
+  const handleSelectChange = () => {
+    console.log(event.target.value)
+    setSelectedProject(event.target.value)
+  }
+
 
 
   return (
@@ -161,6 +191,29 @@ const BlogPost = ({ mode }) => {
           defaultValue={title}
         />
         <label className="text-sm text-red-500">{errors.titleError}</label>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="projectId" className="text-lg">
+          Project ID
+        </label>
+        <select onChange={handleSelectChange} id="projectId" name="projectId" className={` 
+            pl-2  outline-none w-full h-12 border-2 
+            rounded-md text-lg bg-transparent ${
+              theme.theme == "dark" ? "border-teal-500" : "border-indigo-500 "
+            }`}>
+          <option key="None" value="0" className={`${
+              theme.theme == "dark" ? "bg-teal-500 text-black" : "bg-indigo-500 text-white"
+            }`}>Choose a Project</option>
+          {
+            projects.map((item) => {
+              return <option key={item.id} value={item.id} className={`${
+                theme.theme == "dark" ? "bg-teal-500 text-black" : "bg-indigo-500 text-white"
+              }`}>{item.title}</option>
+            })
+          }
+
+        </select>
       </div>
 
       <div className="flex items-center justify-center">
@@ -260,12 +313,14 @@ const BlogPost = ({ mode }) => {
           
         </button>
 
-{mode == "edit" ? <button 
+{
+mode == "edit" ? <button 
 className={` w-[150px] h-[40px] btn flex justify-center items-center gap-1 ${theme.theme == "dark" ? "btn-dark-theme" : "btn-light-theme"}`}
 onClick={() => {navigate("/portfolio/blog")}}>
             CANCEL <span className="material-symbols-rounded">close</span>
           </button>
-          : null}
+          : null
+          }
           
 
       </div>

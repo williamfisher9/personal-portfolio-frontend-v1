@@ -12,6 +12,7 @@ import Blog from "./components/Blog/Blog";
 import BlogPostDisplay from "./components/Blog/BlogPost/BlogPostDisplay";
 import BlogPost from "./components/Blog/BlogPost/BlogPost";
 import NoMatch from "./components/NoMatch/NoMatch";
+import ProjectDetails from "./components/ProjectDetails/ProjectDetails";
 
 const App = () => {
   const [theme, setTheme] = useState(window.localStorage.getItem('theme') || "dark");
@@ -31,6 +32,7 @@ const App = () => {
                 <Route path="/portfolio/blog/posts/new" element={<BlogPost mode="new" />}></Route>
                 <Route path="/portfolio/blog/posts/edit/:id" element={<BlogPost mode="edit" />}></Route>
                 <Route path="/portfolio/blog/posts/:id" element={<BlogPostDisplay />}></Route>
+                <Route path="/portfolio/home/projects/:id" element={<ProjectDetails />}></Route>
                 <Route path="*" element={<NoMatch />}></Route>
               </Route>
             </Routes>
